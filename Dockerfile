@@ -35,8 +35,8 @@ RUN \
 # Production image, copy all the files and run "npm start"
 FROM base AS runner
 
-RUN addgroup --system --gid 1000 nodejs
-RUN adduser --system --uid 1000 nodejs
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nodejs
 
 COPY --from=builder --chown=nodejs:nodejs /app /app
 WORKDIR ${FOLDER}
