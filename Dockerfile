@@ -19,6 +19,9 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
+# Create the node_modules directory if it still does not exist
+RUN mkdir -p node_modules
+
 # Rebuild the source code only when needed
 FROM base AS builder
 COPY . /app
@@ -31,9 +34,6 @@ RUN \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
   else echo "Lockfile not found." && exit 1; \
   fi
-
-# Create the node_modules directory if it still does not exist
-RUN mkdir -p node_modules
 
 # Production image, copy all the files and run "npm start"
 FROM base AS runner
