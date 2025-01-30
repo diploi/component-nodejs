@@ -1,0 +1,22 @@
+diploiVersion: v1.0
+type: component
+name: Node.js
+description: Official Diploi component for Node.js
+
+contexts:
+  - name: app
+    identifier: app
+
+hosts:
+  - name: Node.js
+    identifier: app
+    urlFormat: '[label].[default-domain]'
+
+images:
+  - identifier: app
+    prebuildImage: ghcr.io/diploi/component-nodejs:[tag]
+
+logs:
+  - name: Node.js Log
+    type: log
+    labelSelector: app=app

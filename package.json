@@ -1,0 +1,10 @@
+{
+  "name": "component-nodejs",
+  "version": "1.0.0",
+  "main": "src/index.mjs",
+  "scripts": {
+    "dev": "node --watch src/index.mjs",
+    "build": "echo 'Add your build step here if one is required'",
+    "start": "node src/index.mjs"
+  }
+}
