@@ -38,15 +38,12 @@ RUN \
 # Production image, copy all the files and run "npm start"
 FROM base AS runner
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nodejs
-
-COPY --from=builder --chown=nodejs:nodejs /app /app
+COPY --from=builder --chown=1000:1000 /app /app
 WORKDIR ${FOLDER}
 
 ENV NODE_ENV=production
 
-USER nodejs
+USER 1000:1000
 
 EXPOSE 3000
 ENV PORT=3000
