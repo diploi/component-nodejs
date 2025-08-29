@@ -2,11 +2,25 @@
 
 # Node.js Component for Diploi
 
+Start a demo environment (No card or registration needed)
+https://diploi.com/component/node
+
 A generic Node.js component that can be used to run any Node.js app.
 
 Uses the official [node](https://hub.docker.com/_/node) Docker image.
 
 ## Operation
+
+### Getting started
+
+1. In the Dashboard, click **Create Project +**
+2. Under **Pick Components**, choose **Node.js**
+3. In **Pick Add-ons**, you can add one or multiple databases to your app
+4. Choose **Create Repository**, which will generate a new GitHub repo
+5. Lastly, click **Launch Stack**
+
+Link to guide (includes additional information)
+https://diploi.com/blog/hosting_node_apps
 
 ### Development
 
