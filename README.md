@@ -2,6 +2,10 @@
 
 # Node.js Component for Diploi
 
+[![launch with diploi badge](https://diploi.com/launch.svg)](https://diploi.com/component/node)
+[![component on diploi badge](https://diploi.com/component.svg)](https://diploi.com/component/node)
+[![latest tag badge](https://badgen.net/github/tag/diploi/component-nodejs)](https://diploi.com/component/node)
+
 Start a demo environment (No card or registration needed)
 https://diploi.com/component/node
 
