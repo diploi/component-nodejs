@@ -33,3 +33,7 @@ Will run `npm install` when component is first initialized, and `npm run dev` wh
 ### Production
 
 Will build a production ready image. Image runs `npm install` & `npm build` when being created. Once the image runs, `npm start` is called.
+
+### Notes
+
+- If you are using packages that use native libraries (like `node-canvas` e.g.), it is a good idea to switch the `Dockerfile` and `Dockerfile.dev` to use `node:XX` instead of `node:XX-slim`. You can also add any missing libraries with `RUN apt update && apt install -y <package>` in the dockerfiles.
