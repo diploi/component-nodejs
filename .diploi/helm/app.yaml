@@ -39,7 +39,7 @@ spec:
           image: {{ .Values.images.app }}
           imagePullPolicy: Always
           command: ['npm', 'install']
-          workingDir: /app/{{ .Values.identifier }}
+          workingDir: {{ if .Values.folder }}/app{{ .Values.folder }}{{ else }}/app/{{ .Values.identifier }}{{ end }}
           volumeMounts:
             - name: app-mount
               mountPath: /app
@@ -51,7 +51,7 @@ spec:
           ports:
             - containerPort: 3000
           {{- if eq .Values.stage "development" }}
-          workingDir: /app/{{ .Values.identifier }}
+          workingDir: {{ if .Values.folder }}/app{{ .Values.folder }}{{ else }}/app/{{ .Values.identifier }}{{ end }}
           {{- end }}
           env:
             {{- range .Values.env }}
