@@ -37,3 +37,8 @@ Will build a production ready image. Image runs `npm install` & `npm build` when
 ### Notes
 
 - If you are using packages that use native libraries (like `node-canvas` e.g.), it is a good idea to switch the `Dockerfile` and `Dockerfile.dev` to use `node:XX` instead of `node:XX-slim`. You can also add any missing libraries with `RUN apt update && apt install -y <package>` in the dockerfiles.
+
+## Links
+
+- [Adding Node.js to a project](https://docs.diploi.com/building/components/nodejs)
+- [Node official page](https://nodejs.org/en)
