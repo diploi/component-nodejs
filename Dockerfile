@@ -1,4 +1,4 @@
-FROM node:24-slim AS base
+FROM node:24.13.0-slim AS base
 
 # This will be set by the GitHub action to the folder containing this component.
 ARG FOLDER=/app

@@ -1,7 +1,7 @@
 # This will be set by the GitHub action to the folder containing this component.
 ARG FOLDER=/app
 
-FROM node:24-slim
+FROM node:24.13.0-slim
 
 COPY . /app
 WORKDIR ${FOLDER}
