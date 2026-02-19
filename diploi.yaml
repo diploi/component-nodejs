@@ -3,10 +3,6 @@ type: component
 name: Node.js
 description: Official Diploi component for Node.js
 
-contexts:
-  - name: app
-    identifier: app
-
 supportsAdditionalHosts: { serviceName: 'app'}
 
 hosts:
@@ -16,9 +12,4 @@ hosts:
 
 images:
   - identifier: app
-    prebuildImage: ghcr.io/diploi/component-nodejs:[tag]
-
-logs:
-  - name: Node.js Log
-    type: log
-    labelSelector: app=app
+    prebuildImage: public.ecr.aws/p8t2q7f4/diploi/component-nodejs:[tag]
