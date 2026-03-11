@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-{{- if eq .Values.stage "development"}}
+{{- if eq .Values.stage "development" }}
 kind: StatefulSet
 {{- else }}
 kind: Deployment
@@ -12,7 +12,7 @@ spec:
   selector:
     matchLabels:
       app: app
-  {{- if eq .Values.stage "development"}}
+  {{- if eq .Values.stage "development" }}
   serviceName: app
   {{- else }}
   strategy:
@@ -30,7 +30,7 @@ spec:
       terminationGracePeriodSeconds: 10
       imagePullSecrets:
         - name: diploi-pull-secret
-      {{- if eq .Values.stage "development"}}
+      {{- if eq .Values.stage "development" }}
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -38,8 +38,10 @@ spec:
         - name: install-dependencies
           image: {{ .Values.images.app }}
           imagePullPolicy: Always
-          command: ['npm', 'install']
-          workingDir: /app{{ .Values.folder }} 
+          command:
+            - npm
+            - install
+          workingDir: /app{{ .Values.folder }}
           volumeMounts:
             - name: app-mount
               mountPath: /app
@@ -51,20 +53,20 @@ spec:
           ports:
             - containerPort: 3000
           {{- if eq .Values.stage "development" }}
-            workingDir: /app{{ .Values.folder }}
-            {{- with .Values.containerCommands.developmentStart }}
-            command:
-              - /bin/sh
-              - -c
-              - "{{ . }}"
-            {{- end }}
+          workingDir: /app{{ .Values.folder }}
+          {{- with .Values.containerCommands.developmentStart }}
+          command:
+            - /bin/sh
+            - -c
+            - "{{ . }}"
+          {{- end }}
           {{- else }}
-            {{- with .Values.containerCommands.productionStart }}
-            command:
-              - /bin/sh
-              - -c
-              - "{{ . }}"
-            {{- end }}
+          {{- with .Values.containerCommands.productionStart }}
+          command:
+            - /bin/sh
+            - -c
+            - "{{ . }}"
+          {{- end }}
           {{- end }}
           env:
             {{- range .Values.env }}
