@@ -15,7 +15,10 @@ RUN corepack enable
 
 # Setup PNPM
 ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV PATH="$PNPM_HOME:$PNPM_HOME/bin:$PATH"
+ENV CI=true
+ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+ENV PNPM_CONFIG_STRICT_DEP_BUILDS=false
 
 # Install dependencies based on the preferred package manager
 RUN \
