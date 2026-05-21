@@ -3,12 +3,6 @@ FROM node:24.14.0-slim AS base
 # This will be set by the GitHub action to the folder containing this component.
 ARG FOLDER=/app
 
-# Install dependencies only when needed
-FROM base AS deps
-
-COPY . /app
-WORKDIR ${FOLDER}
-
 # Enable corepack
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 RUN corepack enable
@@ -19,6 +13,11 @@ ENV PATH="$PNPM_HOME:$PNPM_HOME/bin:$PATH"
 ENV CI=true
 ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
 ENV PNPM_CONFIG_STRICT_DEP_BUILDS=false
+
+# Install dependencies only when needed
+FROM base AS deps
+COPY . /app
+WORKDIR ${FOLDER}
 
 # Install dependencies based on the preferred package manager
 RUN \
